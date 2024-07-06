@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>java知识点-基础篇 | 编程小屋</title><meta name="author" content="阿库娅"><meta name="copyright" content="阿库娅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Single Sign On 一处登陆、处处可用 一、前置概念1、单点登录业务介绍1、早期单一服务器，用户认证。缺点：单点性能压力，无法扩展 分布式，SSO(single sign on)模式  缺点：单点性能压力，无法扩展 2、分布式，SSO(single sign on)模式 核心： 所有的认证操作都在认证中心实现，通过认证中心实现了信息的共享 解决 ： 用户身份信息独立管理，更好的分布式管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java知识点-基础篇">
+<meta property="og:url" content="http://example.com/2024/07/06/hello-world/index.html">
+<meta property="og:site_name" content="编程小屋">
+<meta property="og:description" content="Single Sign On 一处登陆、处处可用 一、前置概念1、单点登录业务介绍1、早期单一服务器，用户认证。缺点：单点性能压力，无法扩展 分布式，SSO(single sign on)模式  缺点：单点性能压力，无法扩展 2、分布式，SSO(single sign on)模式 核心： 所有的认证操作都在认证中心实现，通过认证中心实现了信息的共享 解决 ： 用户身份信息独立管理，更好的分布式管理">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-07-06T12:51:25.456Z">
+<meta property="article:modified_time" content="2024-07-06T09:11:41.130Z">
+<meta property="article:author" content="阿库娅">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/07/06/hello-world/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java知识点-基础篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-06 17:11:41'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="编程小屋"><img class="site-icon" src="https://halo-ctc.upyun.ctcnb.cn/halo/cropped-logo.png"/><span class="site-name">编程小屋</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java知识点-基础篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-06T12:51:25.456Z" title="Created 2024-07-06 20:51:25">2024-07-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-06T09:11:41.130Z" title="Updated 2024-07-06 17:11:41">2024-07-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java知识点-基础篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>Single Sign On 一处登陆、处处可用</strong></p>
+<h2 id="一、前置概念"><a href="#一、前置概念" class="headerlink" title="一、前置概念"></a><strong>一、前置概念</strong></h2><h3 id="1、单点登录业务介绍"><a href="#1、单点登录业务介绍" class="headerlink" title="1、单点登录业务介绍"></a><strong>1、单点登录业务介绍</strong></h3><h4 id="1、早期单一服务器，用户认证。"><a href="#1、早期单一服务器，用户认证。" class="headerlink" title="1、早期单一服务器，用户认证。"></a>1、早期单一服务器，用户认证。</h4><p>缺点：单点性能压力，无法扩展</p>
+<p>分布式，SSO(single sign on)模式</p>
+<p><img src="https://ctcnb.cn/2023/02/image-13.png" alt="img"></p>
+<p><strong>缺点</strong>：单点性能压力，无法扩展</p>
+<h4 id="2、分布式，SSO-single-sign-on-模式"><a href="#2、分布式，SSO-single-sign-on-模式" class="headerlink" title="2、分布式，SSO(single sign on)模式"></a>2、分布式，SSO(single sign on)模式</h4><p><img src="https://ctcnb.cn/2023/02/image-14.png" alt="img"></p>
+<p><strong>核心：</strong></p>
+<p>所有的认证操作都在认证中心实现，通过认证中心实现了信息的共享</p>
+<p><strong>解决 ：</strong></p>
+<p>用户身份信息独立管理，更好的分布式管理。</p>
+<p>可以自己扩展安全策略</p>
+<p>跨域不是问题</p>
+<p><strong>缺点：</strong></p>
+<p>认证服务器访问压力较大。</p>
+<h2 id="二、相关基本概念"><a href="#二、相关基本概念" class="headerlink" title="二、相关基本概念"></a>二、相关基本概念</h2><h3 id="1、跨域-Web-SSO"><a href="#1、跨域-Web-SSO" class="headerlink" title="1、跨域 Web SSO"></a><strong>1、跨域 Web SSO</strong></h3><p>域名通过“.”号切分后，从右往左看，不包含“.”的是顶级域名，包含一个“.”的是一级域名，</p>
+<p>包含两个“.”的是二级域名，以此类推。</p>
+<p>例如对网址 <a target="_blank" rel="noopener" href="http://123.57.56.245:8080/baibaomen%EF%BC%8C">http://123.57.56.245:8080/archives/1672410496522，</a> 域名部分是 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/baibaomen%EF%BC%8C%E5%9F%9F%E5%90%8D%E9%83%A8%E5%88%86%E6%98%AF">www.ctcnb.cn</a>。</p>
+<p>用“.”拆分后从右往左看：</p>
+<p>cookie.setDomain(“.<a target="_blank" rel="noopener" href="http://www.cnblogs.com/baibaomen%EF%BC%8C%E5%9F%9F%E5%90%8D%E9%83%A8%E5%88%86%E6%98%AF">ctcnb.cn</a>”);&#x2F;&#x2F;最多设置到本域的一级域名这里</p>
+<p>”com”不包含“.”，是顶级域名； “<a target="_blank" rel="noopener" href="http://www.cnblogs.com/baibaomen%EF%BC%8C%E5%9F%9F%E5%90%8D%E9%83%A8%E5%88%86%E6%98%AF">ctcnb.cn</a>”包含一个“.”，是一级域名；</p>
+<p><a target="_blank" rel="noopener" href="http://123.57.56.245:8080/baibaomen%EF%BC%8C">www.ctcnb.cn</a> 包含两个“.”，是二级域名。</p>
+<p><strong>跨域 Web SSO 指的是针对 Web 站点，各级域名不同都能处理的单点登录方案。</strong></p>
+<h3 id="2、浏览器读写-cookie-的安全性限制"><a href="#2、浏览器读写-cookie-的安全性限制" class="headerlink" title="2、浏览器读写 cookie 的安全性限制"></a>2、<strong>浏览器读写 cookie 的安全性限制</strong></h3><p><strong>一级或顶级域名不同的网站，无法读到彼此写的 cookie。</strong></p>
+<p>所以 <a target="_blank" rel="noopener" href="http://baidu.com/">baidu.com</a> 无法读到 <a target="_blank" rel="noopener" href="http://cnblogs.com/">cnblogs.com</a> 写的 cookie。</p>
+<p>一级域名相同，只是二级或更高级域名不同的站点，可以通过设置 domain 参数共享 cookie读写。这种场景可以选择不跨域的 SSO 方案。</p>
+<p>域名相同，只是 https 和 http 协议不同的 URL，默认 cookie 可以共享。</p>
+<h3 id="3、http-协议是无状态协议。"><a href="#3、http-协议是无状态协议。" class="headerlink" title="3、http 协议是无状态协议。"></a>3、<strong>http 协议是无状态协议。</strong></h3><p><strong>浏览器访问服务器时，要让服务器知道你是谁，只有两种方式：</strong></p>
+<ul>
+<li>方式一：把“你是谁”写入 cookie。它会随每次 HTTP 请求带到服务端；</li>
+<li>方式二：在 URL、表单数据中带上你的用户信息（也可能在 HTTP 头部）。这种方式依赖于从特定的网页入口进入，因为只有走特定的入口，才有机会拼装出相应的信息，提交到服务端。</li>
+</ul>
+<p>大部分 SSO 需求都希望不依赖特定的网页入口（集成门户除外），所以后一种方式有局限性。适应性强的方式是第一种，即在浏览器通过 cookie 保存用户信息相关凭据，随每次请求传递到服务端。</p>
+<h2 id="三、实现"><a href="#三、实现" class="headerlink" title="三、实现"></a><strong>三、实现</strong></h2><h3 id="1、分布式session"><a href="#1、分布式session" class="headerlink" title="1、分布式session"></a><strong>1、分布式session</strong></h3><h3 id="2、Cookie-Redis"><a href="#2、Cookie-Redis" class="headerlink" title="2、Cookie+Redis"></a><strong>2、Cookie+Redis</strong></h3><p><strong>gulimall实现：</strong></p>
+<p><strong>核心：</strong></p>
+<ol>
+<li>给登服务器留下登录痕迹</li>
+<li>登绿服务器要将token信息重定向的时候，带到ur地址上</li>
+<li>其他系统要处理url地址上的关键token，只要有，将token对应的用户保存到自己的session中</li>
+<li>自己系统将用户保存在自己的会话中。</li>
+</ol>
+<p><img src="https://ctcnb.cn/2023/02/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.png" alt="img"></p>
+<h3 id="3、Token接入方式"><a href="#3、Token接入方式" class="headerlink" title="3、Token接入方式"></a><strong>3、Token接入方式</strong></h3><p>类似社交登录</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">阿库娅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/06/hello-world/">http://example.com/2024/07/06/hello-world/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">阿库娅</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E7%BD%AE%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">一、前置概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E4%B8%9A%E5%8A%A1%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、单点登录业务介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E6%97%A9%E6%9C%9F%E5%8D%95%E4%B8%80%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81%E3%80%82"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、早期单一服务器，用户认证。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%8CSSO-single-sign-on-%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、分布式，SSO(single sign on)模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9B%B8%E5%85%B3%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">二、相关基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%B7%A8%E5%9F%9F-Web-SSO"><span class="toc-number">2.1.</span> <span class="toc-text">1、跨域 Web SSO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%BB%E5%86%99-cookie-%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E9%99%90%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2、浏览器读写 cookie 的安全性限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81http-%E5%8D%8F%E8%AE%AE%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%E5%8D%8F%E8%AE%AE%E3%80%82"><span class="toc-number">2.3.</span> <span class="toc-text">3、http 协议是无状态协议。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">三、实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8Fsession"><span class="toc-number">3.1.</span> <span class="toc-text">1、分布式session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Cookie-Redis"><span class="toc-number">3.2.</span> <span class="toc-text">2、Cookie+Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Token%E6%8E%A5%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">3、Token接入方式</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/06/hello-world/" title="java知识点-基础篇">java知识点-基础篇</a><time datetime="2024-07-06T12:51:25.456Z" title="Created 2024-07-06 20:51:25">2024-07-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 阿库娅</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
