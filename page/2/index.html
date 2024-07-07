@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编程小屋 - 一个编程小学生的成长日志</title><meta name="author" content="阿库娅"><meta name="copyright" content="阿库娅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="编程小屋">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="编程小屋">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="阿库娅">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '编程小屋',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-07-07 15:54:57'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">78</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="编程小屋"><img class="site-icon" src="https://halo-ctc.upyun.ctcnb.cn/halo/cropped-logo.png"/><span class="site-name">编程小屋</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">编程小屋</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/02/15/docker-%E6%90%AD%E5%BB%BA-minio-%E5%AE%B9%E5%99%A8/" title="Docker 搭建 Minio 容器 ">Docker 搭建 Minio 容器 </a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-02-15T08:38:59.000Z" title="Created 2023-02-15 16:38:59">2023-02-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a></span></div><div class="content">一、简介：Minio 是一个基于Apache License v2.0开源协议的对象存储服务，虽然轻量，却拥有着不错的性能。它兼容亚马逊S3云存储服务接口，非常适合于存储大容量非结构化的数据。
+例如图片、视频、日志文件、备份数据和容器&#x2F;虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。
+二、安装1、下载镜像Docker官方镜像 
+1docker pull minio/minio:latest
+
+检查当前所有Docker下载的镜像
+1docker images
+
+2、创建目录12mkdir -p /home/minio/configmkdir -p /home/minio/data
+
+3、创建Minio容器并运行12345678910docker run -p 9010:9000 -p 9090:9090 \     --net=host \     --name minio \     -d --restart=always \     -e &quot;MINIO_ACCESS_KEY=minioadmin&quot; \     -e &quot ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/02/12/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" title="压力测试和JMeter的使用">压力测试和JMeter的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-02-12T11:37:24.000Z" title="Created 2023-02-12 19:37:24">2023-02-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a></span></div><div class="content">概述1.性能指标从外部看，性能测试主要关注如下三个指标【量越大越好，时间越少越好】
+
+吞吐量:每秒钟系统能够处理的请求数、任务数。
+响应时间:服务处理一个请求或一个任务的耗时。
+错误率:一批请求中结果出错的请求所占比例。
+
+1.1 响应时间RT(Response Time)（重要）响应时间指用户从客户端发起一个请求开始，到客户端接收到从服务器端返回的响应结束，整个过程所耗费的时间。
+1.2 错误率（重要）一批请求中结果出错的请求所占比例。
+1.3 HPS（Hits Per Second）每秒点击次数，单位是次&#x2F;秒。
+TPS(Transaction per Second)吞吐量（重要）系统每秒处理交易数，单位是笔&#x2F;秒。
+QPS(Query per Second)（重要）系统每秒处理查询次数，单位是次&#x2F;秒。
+对于互联网业务中，如果某些业务有且仅有一个请求连接，那么TPS=QPS=HPS，一 般情况下用 TPS来衡量整个业务流程，用QPS来衡量接口查询次数，用HPS来表示对服务器单击请求。
+无论TPS、QPS、HPS,此指标是衡量系统处理能力非常重要的指标，越大 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/24/%E7%89%9B%E5%AE%A2%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/" title="牛客刷题总结">牛客刷题总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-24T06:02:15.000Z" title="Created 2023-01-24 14:02:15">2023-01-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/uncategorized/">uncategorized</a></span></div><div class="content">1、对于java类型变量char c,short s,float f,double d,表达式c*s+f+d的结果类型为（）
+A. float
+B. char
+C. short
+D. double
+自动类型转换遵循下面的规则：
+
+若参与运算的数据类型不同，则先转换成同一类型，然后进行运算。
+转换按数据长度增加的方向进行，以保证精度不降低。例如int型和long型运算时，先把int量转成long型后再进行运算。
+所有的浮点运算都是以双精度进行的，即使仅含float单精度量运算的表达式，也要先转换成double型，再作运算。
+char型和short型参与运算时，必须先转换成int型。
+在赋值运算中，赋值号两边的数据类型不同时，需要把右边表达式的类型将转换为左边变量的类型。如果右边表达式的数据类型长度比左边长时，将丢失一部分数据，这样会降低精度。
+
+下图表示了类型自动转换的规则：
+
+2、下列哪个修饰符可以使在一个类中定义的成员变量只能被同一包中的类访问？
+A. private
+B. 无修饰符
+C. public
+D. protected
+Java中，可以使用访问控制符来保护对类、变量、方法和 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/16/%E7%94%B3%E8%AF%B7%20Office%20365%20E5%20%E8%AE%A2%E9%98%85%E5%B9%B6%E6%B0%B8%E4%B9%85%E7%BB%AD%E6%9C%9F+%205T%20%E4%B8%8D%E9%99%90%E9%80%9F%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B/" title="申请 Office 365 E5 订阅并永久续期+ 5T 不限速网盘教程">申请 Office 365 E5 订阅并永久续期+ 5T 不限速网盘教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-16T02:43:45.000Z" title="Created 2023-01-16 10:43:45">2023-01-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/uncategorized/">uncategorized</a></span></div><div class="content">一、前言微软其实一直都对开发版免费提供正版office全家桶，申请一次开发者计划可以获得为期90天的免费 Office365 E5 订阅。 而E5计划就包含了25个用于所有 Office 365 应用的许可证。还附带5T的不限速OneDrive网盘容量。本文将详细介绍如何申请E5订阅许可、获取5T容量的OneDrive ，以及永久续期教程。
+二、申请开发者账号1. 访问申请申请地址：开发人员计划Microsoft 365开发人员中心
+
+点击立即加入
+2. 登录
+3. 设置E5订阅
+4. 订阅成功
+可以使用”用户名@域.onmicrosoft.com” 和之前设置的密码登录你电脑上的Office
+三、分配账号如果需要分配账户给朋友或者家人，点击此处
+
+四、设置 OneDrive 5T 容量地址：SharePoint 管理中心
+
+设置5t容量
+五、自动续期方法有很多，这里采用github上的一个项目实现。
+文档：E5 自动订阅程序[已开源] - 浅忆博客 (qyi.io)
+1. 访问链接https://portal.azure.com/#blade/Microsoft\_AAD\_IAM/ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-15T14:24:04.000Z" title="Created 2023-01-15 22:24:04">2023-01-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a></span></div><div class="content">
+一、设计模式相关内容介绍资料下载：
+1. 设计模式概述1.1 软件设计模式的产生背景“设计模式”最初并不是出现在软件设计中，而是被用于建筑领域的设计中。
+1977年美国著名建筑大师、加利福尼亚大学伯克利分校环境结构中心主任克里斯托夫·亚历山大（Christopher Alexander）在他的著作《建筑模式语言：城镇、建筑、构造》中描述了一些常见的建筑设计问题，并提出了 253 种关于对城镇、邻里、住宅、花园和房间等进行设计的基本模式。
+1990年软件工程界开始研讨设计模式的话题，后来召开了多次关于设计模式的研讨会。直到1995 年，艾瑞克·伽马（ErichGamma）、理査德·海尔姆（Richard Helm）、拉尔夫·约翰森（Ralph Johnson）、约翰·威利斯迪斯（John Vlissides）等 4 位作者合作出版了《设计模式：可复用面向对象软件的基础》一书，在此书中收录了 23 个设计模式，这是设计模式领域里程碑的事件，导致了软件设计模式的突破。这 4 位作者在软件开发领域里也以他们的“四人组”（Gang of Four，GoF）著称。
+1.2 软件设计模式的概念软件 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/15/Linux%E5%BC%80%E5%90%AFssh%E5%B9%B6%E5%85%81%E8%AE%B8root%E7%99%BB%E5%BD%95%EF%BC%88ubuntu%EF%BC%89/" title="Linux开启ssh并允许root登录（ubuntu）">Linux开启ssh并允许root登录（ubuntu）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-15T04:46:02.000Z" title="Created 2023-01-15 12:46:02">2023-01-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">环境部署</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/bug%E8%A7%A3%E5%86%B3/">bug解决</a></span></div><div class="content">一、安装ssh服务器端Ubuntu默认没有安装ssh的server，需要安装
+1apt-get install openssh-server
+
+二、允许远程使用root账号ssh连接本机
+修改&#x2F;etc&#x2F;ssh&#x2F;sshd_config文件
+
+1vim /etc/ssh/sshd_config
+
+2. 修改如下：允许root账户登录
+12#PermitRootLogin prohibit-passwordPermitRootLogin yes
+
+3. 需要重启系统或者sshd服务
+1sudo service ssh restart
+
+三、如果root用户无法连接如果正常用户可以连接而普通用户无法连接，尝试重置一下root用户密码
+1sudo passwd root
+
+
+重置密码
+成功
+
+连接成功
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/14/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD+%E9%99%8D%E7%BA%A7+%E9%99%90%E6%B5%81/" title="sentinel实现熔断+降级+限流">sentinel实现熔断+降级+限流</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-14T13:12:56.000Z" title="Created 2023-01-14 21:12:56">2023-01-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/">技术栈</a></span></div><div class="content">一、概念1.总结1.调用方设置controller资源限流，会返回UrlBlockSentinelHandler处理信息（当前流量请求过大）【url资源】2.调用方设置feign资源降级，会触发熔断fallback3.被调用方宕机，会触发熔断fallback4.提供方设置controller资源降级，会触发UrlBlockSentinelHandler处理信息（当前流量请求过大）【url资源】5.自定义资源限流，会执行catch【当资源时一段代码时，使用自定义资源try catch】6.注解方式定义资源限流，会触发指定blockHandler【当资源时方法时使用注解】
+url资源统一使用UrlBlockSentinelHandler处理，自定义资源、注解资源需要单独处理（blockHandler和catch）
+2.熔断
+什么是熔断？A服务调用B服务的某个功能,由于网络不稳定问题，或者B服务卡机，导致功能时间超长。如果这样子的次数太多。我们就可以直接将B断路了(A不再请求B接口），凡是调用B的直接返回降级数据，不必等待B的超长执行。这样B的故障问题，就不会级联影响到A。（是调用方的主动规 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/13/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/" title="线程池和异步编排">线程池和异步编排</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-13T05:38:47.000Z" title="Created 2023-01-13 13:38:47">2023-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">1.为什么使用线程池？
+降低资源的消耗【减少创建销毁操作】通过重复利用已经创建好的线程降低线程的创建和销毁带来的损耗高并发状态下过多创建线程可能将资源耗尽
+提高响应速度【控制线程个数】因为线程池中的线程数没有超过线程池的最大上限时,有的线程处于等待分配任务的状态，当任务来时无需创建新的线程就能执行（线程个数过多导致CPU调度慢）
+提高线程的可管理性【例如系统中可以创建两个线程池，核心线程池、非核心线程池【例如发送短信】，显存告警时关闭非核心线程池释放内存资源】线程池会根据当前系统特点对池内的线程进行优化处理，减少创建和销毁线程带来的系统开销。无限的创建和销毁线程不仅消耗系统资源，还降低系统的稳定性，使用线程池进行统一分配
+
+2.常见的4种默认线程池123456789101112注意：    回收线程 = maximumPoolSize - corePoolSize​可缓冲线程池【CachedThreadPool】：corePoolSize=0, maximumPoolSize=Integer.MAX_VALUE定长线程池【FixedThreadPool】：corePoolSize=ma ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/13/seata/" title="本地事务&amp;分布式事务（Seata）">本地事务&amp;分布式事务（Seata）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-13T05:06:51.000Z" title="Created 2023-01-13 13:06:51">2023-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">一、本地事务
+本地事务是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器位于同一节点相同数据库上。
+
+1.ACID理论（强一致性）原子性(Atomicity)、一致性(Consistency )隔离性或独立性( Isolation)和持久性(Durabilily)，简称就是ACID;
+
+原子性：一系列的操作整体不可拆分，要么同时成功，要么同时失败
+一致性：数据在事务的前后，不能破坏数据的完整性以及业务逻辑上的一致性。
+隔离性：多个事务并发访问时，事务之间互相隔离。（脏读、不可重复读、幻读）
+持久性：事务成功后，数据会保存在数据库并不再回滚
+
+2.事务间的影响三者可能同时出现，都会导致同一事务中前后两次读取结果不一致
+描述
+脏读
+在一个事务中读取了另一个事务未提交的脏数据（前后两次结果读取不一致）
+不可重复读
+在一个事务中读取了另一个事务dml操作并提交的数据（前后两次结果读取不一致）
+幻读
+在一个事务中读取了另一个事务ddl操作并提交的数据（前后两次结果读取不一致）
+3.解决方法开启事务，设置事务隔离级别
+在数据库管理系统（DBMS）中，默认情况下一条SQL就是一个单独事务， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/01/11/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1-spring%E6%95%B4%E5%90%88cron%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="定时任务-spring整合cron表达式">定时任务-spring整合cron表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-01-11T04:44:55.000Z" title="Created 2023-01-11 12:44:55">2023-01-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="content">文档Cron Trigger Tutorial
+1.实现方案1.1.Timer1.2.线程池1.3.mq的延时队列1.4.QUARTZ
+1.搭配cron表达式使用 2.支持年，spring不支持年 3.在周几的位置，quartz的周1是2，spring的周1是1
+
+spring框架的定时任务
+
+springboot默认定时任务框架不是QUARTZ，如果需要使用引入即可
+
+2.cron表达式2.1. 语法：秒 分 时 日 月 周 年 （spring 不支持年，所以可以不写）
+http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html
+A cron expression is a string comprised of 6 or 7 fields separated by white space. Fields can contain any of the allowed values, along with various combinations of the allowed ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">阿库娅</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">78</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ctcnb"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/%E5%9C%A8%E7%BB%BF%E8%81%94%E4%B8%8A%E5%AE%89%E8%A3%85clouddrive2/" title="在绿联上安装clouddrive2">在绿联上安装clouddrive2</a><time datetime="2024-07-07T02:22:00.000Z" title="Created 2024-07-07 10:22:00">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/%E4%BD%BF%E7%94%A8github%E5%92%8Ccloudflare%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BAdocker%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%8C%E8%A7%A3%E5%86%B3docker%E9%95%9C%E5%83%8F%E6%97%A0%E6%B3%95%E6%8B%89%E5%8F%96/" title="使用github和cloudflare实现自建docker加速器，解决docker镜像无法拉取的问题">使用github和cloudflare实现自建docker加速器，解决docker镜像无法拉取的问题</a><time datetime="2024-07-07T02:20:36.000Z" title="Created 2024-07-07 10:20:36">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/docker-java%E4%BD%BF%E7%94%A8win%E7%B3%BB%E7%BB%9F%E4%B8%8Bdocker/" title="docker-java使用win系统下docker">docker-java使用win系统下docker</a><time datetime="2024-07-07T02:18:45.000Z" title="Created 2024-07-07 10:18:45">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/api%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/" title="api开发平台">api开发平台</a><time datetime="2024-07-07T02:16:44.000Z" title="Created 2024-07-07 10:16:44">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BAwin-linux%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" title="python程序打包为win/linux可执行文件">python程序打包为win/linux可执行文件</a><time datetime="2024-07-07T01:47:49.000Z" title="Created 2024-07-07 09:47:49">2024-07-07</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/bug%E8%A7%A3%E5%86%B3/"><span class="card-category-list-name">bug解决</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/nas/"><span class="card-category-list-name">nas</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/uncategorized/"><span class="card-category-list-name">uncategorized</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/"><span class="card-category-list-name">技术栈</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/"><span class="card-category-list-name">环境部署</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="card-category-list-name">知识点</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">编程</span><span class="card-category-list-count">12</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 1.1em; color: #999">枚举</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.1em; color: #999">链表</a> <a href="/tags/%E5%85%8D%E8%B4%B9%E7%BD%91%E7%9B%98/" style="font-size: 1.23em; color: #999ea6">免费网盘</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 1.1em; color: #999">深度优先搜索</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%82%A8%E5%AD%98/" style="font-size: 1.23em; color: #999ea6">对象储存</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 1.1em; color: #999">递归</a> <a href="/tags/%E6%B0%B8%E4%B9%85/" style="font-size: 1.23em; color: #999ea6">永久</a> <a href="/tags/%E6%A0%88/" style="font-size: 1.1em; color: #999">栈</a> <a href="/tags/docker/" style="font-size: 1.5em; color: #99a9bf">docker</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" style="font-size: 1.1em; color: #999">记忆化搜索</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a> <a href="/tags/python/" style="font-size: 1.23em; color: #999ea6">python</a> <a href="/tags/map/" style="font-size: 1.1em; color: #999">map</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 1.23em; color: #999ea6">微服务</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 1.1em; color: #999">交互</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">贪心算法</a> <a href="/tags/bug/" style="font-size: 1.1em; color: #999">bug</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" style="font-size: 1.23em; color: #999ea6">项目实战</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 1.1em; color: #999">二分法</a> <a href="/tags/ssh/" style="font-size: 1.23em; color: #999ea6">ssh</a> <a href="/tags/springcloud/" style="font-size: 1.37em; color: #99a4b2">springcloud</a> <a href="/tags/ubuntu/" style="font-size: 1.23em; color: #999ea6">ubuntu</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.1em; color: #999">双指针</a> <a href="/tags/5T/" style="font-size: 1.23em; color: #999ea6">5T</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 1.5em; color: #99a9bf">面试</a> <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" style="font-size: 1.23em; color: #999ea6">压力测试</a> <a href="/tags/%E7%99%BB%E5%BD%95/" style="font-size: 1.37em; color: #99a4b2">登录</a> <a href="/tags/feign/" style="font-size: 1.23em; color: #999ea6">feign</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 1.23em; color: #999ea6">框架</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 1.23em; color: #999ea6">事务</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 1.1em; color: #999">优先队列</a> <a href="/tags/%E7%BB%BF%E8%81%94/" style="font-size: 1.23em; color: #999ea6">绿联</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 1.1em; color: #999">数组</a> <a href="/tags/dh2600/" style="font-size: 1.23em; color: #999ea6">dh2600</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 1.1em; color: #999">前缀和</a> <a href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 1.1em; color: #999">广度优先搜索</a> <a href="/tags/%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86/" style="font-size: 1.1em; color: #999">裴蜀定理</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.1em; color: #999">数学</a> <a href="/tags/%E6%BB%91%E5%80%92%E7%AA%97%E5%8F%A3/" style="font-size: 1.1em; color: #999">滑倒窗口</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">July 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">May 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">February 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">January 2023</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">April 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-07T07:54:57.939Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 阿库娅</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

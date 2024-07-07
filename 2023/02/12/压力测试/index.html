@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>压力测试和JMeter的使用 | 编程小屋</title><meta name="author" content="阿库娅"><meta name="copyright" content="阿库娅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概述1.性能指标从外部看，性能测试主要关注如下三个指标【量越大越好，时间越少越好】  吞吐量:每秒钟系统能够处理的请求数、任务数。 响应时间:服务处理一个请求或一个任务的耗时。 错误率:一批请求中结果出错的请求所占比例。  1.1 响应时间RT(Response Time)（重要）响应时间指用户从客户端发起一个请求开始，到客户端接收到从服务器端返回的响应结束，整个过程所耗费的时间。 1.2 错误率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="压力测试和JMeter的使用">
+<meta property="og:url" content="http://example.com/2023/02/12/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="编程小屋">
+<meta property="og:description" content="概述1.性能指标从外部看，性能测试主要关注如下三个指标【量越大越好，时间越少越好】  吞吐量:每秒钟系统能够处理的请求数、任务数。 响应时间:服务处理一个请求或一个任务的耗时。 错误率:一批请求中结果出错的请求所占比例。  1.1 响应时间RT(Response Time)（重要）响应时间指用户从客户端发起一个请求开始，到客户端接收到从服务器端返回的响应结束，整个过程所耗费的时间。 1.2 错误率">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-02-12T11:37:24.000Z">
+<meta property="article:modified_time" content="2024-07-07T07:41:58.065Z">
+<meta property="article:author" content="阿库娅">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="spring">
+<meta property="article:tag" content="压力测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/02/12/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '压力测试和JMeter的使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-07 15:41:58'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">78</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="编程小屋"><img class="site-icon" src="https://halo-ctc.upyun.ctcnb.cn/halo/cropped-logo.png"/><span class="site-name">编程小屋</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">压力测试和JMeter的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-02-12T11:37:24.000Z" title="Created 2023-02-12 19:37:24">2023-02-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-07T07:41:58.065Z" title="Updated 2024-07-07 15:41:58">2024-07-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="压力测试和JMeter的使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="1-性能指标"><a href="#1-性能指标" class="headerlink" title="1.性能指标"></a>1.性能指标</h2><p>从外部看，性能测试主要关注如下三个指标【量越大越好，时间越少越好】</p>
+<ul>
+<li>吞吐量:每秒钟系统能够处理的请求数、任务数。</li>
+<li>响应时间:服务处理一个请求或一个任务的耗时。</li>
+<li>错误率:一批请求中结果出错的请求所占比例。</li>
+</ul>
+<h3 id="1-1-响应时间RT-Response-Time-（重要）"><a href="#1-1-响应时间RT-Response-Time-（重要）" class="headerlink" title="1.1 响应时间RT(Response Time)（重要）"></a>1.1 响应时间RT(Response Time)（重要）</h3><p>响应时间指用户从客户端发起一个请求开始，到客户端接收到从服务器端返回的响应结束，整个过程所耗费的时间。</p>
+<h3 id="1-2-错误率（重要）"><a href="#1-2-错误率（重要）" class="headerlink" title="1.2 错误率（重要）"></a>1.2 错误率（重要）</h3><p>一批请求中结果出错的请求所占比例。</p>
+<h3 id="1-3-HPS（Hits-Per-Second）"><a href="#1-3-HPS（Hits-Per-Second）" class="headerlink" title="1.3 HPS（Hits Per Second）"></a>1.3 HPS（Hits Per Second）</h3><p>每秒点击次数，单位是次&#x2F;秒。</p>
+<h3 id="TPS-Transaction-per-Second-吞吐量（重要）"><a href="#TPS-Transaction-per-Second-吞吐量（重要）" class="headerlink" title="TPS(Transaction per Second)吞吐量（重要）"></a>TPS(Transaction per Second)吞吐量（重要）</h3><p>系统每秒处理交易数，单位是笔&#x2F;秒。</p>
+<h3 id="QPS-Query-per-Second-（重要）"><a href="#QPS-Query-per-Second-（重要）" class="headerlink" title="QPS(Query per Second)（重要）"></a>QPS(Query per Second)（重要）</h3><p>系统每秒处理查询次数，单位是次&#x2F;秒。</p>
+<p>对于互联网业务中，如果某些业务有且仅有一个请求连接，那么<code>TPS=QPS=HPS</code>，一 般情况下用 TPS来衡量整个业务流程，用QPS来衡量接口查询次数，用HPS来表示对服务器单击请求。</p>
+<p>无论TPS、QPS、HPS,此指标是衡量系统处理能力非常重要的指标，越大越好，根据经验，一般情况下:</p>
+<ul>
+<li>金融行业:1000TPS~5000OTPS，不包括互联网化的活动</li>
+<li>保险行业:100TPS~10000OTPS，不包括互联网化的活动</li>
+<li>制造行业:10TPS~5000TPS</li>
+<li>互联网电子商务:1000OTPS~1000000TPS</li>
+<li>互联网中型网站:1000TPS~50000TPS</li>
+<li>互联网小型网站:50OTPS~10000TPS</li>
+</ul>
+<h3 id="最大响应时间（MaxResponse-Time）"><a href="#最大响应时间（MaxResponse-Time）" class="headerlink" title="最大响应时间（MaxResponse Time）"></a>最大响应时间（MaxResponse Time）</h3><p>指用户发出请求或者指令到系统做出反应(响应)的最大时间。</p>
+<h3 id="最少响应时间-Mininum-ResponseTime）"><a href="#最少响应时间-Mininum-ResponseTime）" class="headerlink" title="最少响应时间(Mininum ResponseTime）"></a>最少响应时间(Mininum ResponseTime）</h3><p>指用户发出请求或者指令到系统做出反应(响应)的最少时间。</p>
+<h3 id="90-响应时间-90-Response-Time"><a href="#90-响应时间-90-Response-Time" class="headerlink" title="90%响应时间(90%Response Time)"></a>90%响应时间(90%Response Time)</h3><p>是指所有用户的响应时间进行排序，第90%的响应时间。</p>
+<h2 id="2-压测工具"><a href="#2-压测工具" class="headerlink" title="2. 压测工具"></a>2. 压测工具</h2><h3 id="Apache-AB"><a href="#Apache-AB" class="headerlink" title="Apache AB"></a>Apache AB</h3><h3 id="加特林"><a href="#加特林" class="headerlink" title="加特林"></a>加特林</h3><h3 id="JMeter"><a href="#JMeter" class="headerlink" title="JMeter"></a>JMeter</h3><ul>
+<li><p>文档网址：<a target="_blank" rel="noopener" href="https://jmeter.apache.org/download/_jmeter.cgi">https://jmeter.apache.org/download\_jmeter.cgi</a></p>
+</li>
+<li><p>zip安装包：<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache//jmeter/binaries/apache-jmeter-5.3.zip">https://mirrors.tuna.tsinghua.edu.cn/apache//jmeter/binaries/apache-jmeter-5.3.zip</a></p>
+</li>
+</ul>
+<h1 id="JMeter-1"><a href="#JMeter-1" class="headerlink" title="JMeter"></a>JMeter</h1><h2 id="1-使用步骤"><a href="#1-使用步骤" class="headerlink" title="1.使用步骤"></a>1.使用步骤</h2><h3 id="1-1-添加线程组"><a href="#1-1-添加线程组" class="headerlink" title="1.1.添加线程组"></a>1.1.添加线程组</h3><p>线程属性值含义：</p>
+<ul>
+<li>线程数：200</li>
+<li>Ramp-Up时间：1【1秒启动200个线程】</li>
+<li>循环次数：100【每个线程发送100个请求，一共200*100 &#x3D; 20000个请求】</li>
+</ul>
+<h3 id="1-2-添加取样器"><a href="#1-2-添加取样器" class="headerlink" title="1.2.添加取样器"></a>1.2.添加取样器</h3><p>取样器：表示测试何种请求，这里使用HTTP请求</p>
+<ol>
+<li>右键线程组&#x3D;》添加取样器&#x3D;》HTTP请求&#x3D;》</li>
+<li>指定url，端口，参数，请求类型</li>
+</ol>
+<h3 id="1-3-添加监听器"><a href="#1-3-添加监听器" class="headerlink" title="1.3.添加监听器"></a>1.3.添加监听器</h3><h4 id="察看结果树"><a href="#察看结果树" class="headerlink" title="察看结果树"></a>察看结果树</h4><p>查看每次请求是否成功</p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635426441427.png" alt="1635426441427"></p>
+<h4 id="汇总报告"><a href="#汇总报告" class="headerlink" title="汇总报告"></a>汇总报告</h4><p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635426386057.png" alt="1635426386057"></p>
+<h4 id="聚合报告"><a href="#聚合报告" class="headerlink" title="聚合报告"></a>聚合报告</h4><p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635426431409.png" alt="1635426431409"></p>
+<h2 id="2-JMeterAddress-Already-in-use-错误解决"><a href="#2-JMeterAddress-Already-in-use-错误解决" class="headerlink" title="2.JMeterAddress Already in use 错误解决"></a>2.JMeterAddress Already in use 错误解决</h2><p>windows帮助文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-CN/troubleshoot/windows-client/networking/connect-tcp-greater-than-5000-error-wsaenobufs-10055">错误 WSAENOBUFS (10055) - Windows Client Microsoft Learn</a></p>
+<p>windows本身提供的端口访问机制的问题。<br>Windows提供给 TCP&#x2F;IP链接的端口为1024-5000，并且要四分钟来循环回收他们。就导致<br>我们在短时间内跑大量的请求时将端口占满了。</p>
+<ol>
+<li>cmd中，用regedit命令打开注册表</li>
+<li>在HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters下<ul>
+<li>右击parameters，添加2个新的 DWORD，名字为MaxUserPort、TCPTimedWaitDelay</li>
+<li>然后双击MaxUserPort，输入数值数据为65534，基数选择十进制（如果是分布式运行的话，控制机器和负载机器都需要这样操作）</li>
+<li>然后双击TCPTimedWaitDelay，输入数值数据为30，基数选择十进制（如果是分布式运行的话，控制机器和负载机器都需要这样操作)</li>
+<li>重启机器</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-优化"><a href="#3-优化" class="headerlink" title="3.优化"></a>3.优化</h2><h3 id="3-1-影响性能考虑点"><a href="#3-1-影响性能考虑点" class="headerlink" title="3.1.影响性能考虑点"></a>3.1.影响性能考虑点</h3><p>1.影响性能考虑点包括:【这里可以从访问顺序来作为链路进行性能调优】</p>
+<p>数据库、应用程序、中间件（ tomact、gateway、Nginx、）、网络（带宽）和操作系统等方面</p>
+<p>2.首先考虑自己的应用属于CPU密集型还是Io密集型，根据jvisualvm查看应用健康情况</p>
+<ul>
+<li>CPU：计算、排序、过滤、整合【集群】</li>
+<li>IO：网络、磁盘、数据库、redis【内存+缓存+固态+提高网卡的传输效率】</li>
+</ul>
+<p>3.监控执行时中间件CPU、内存使用量<br>docker stats：查看cpu占用、内存使用量.</p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635429437505.png" alt="1635429437505"></p>
+<p>例如：minorGC每次都能干净释放eden，表示很健康</p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635430395359.png" alt="1635430395359"></p>
+<h3 id="3-2-jvm内存模型"><a href="#3-2-jvm内存模型" class="headerlink" title="3.2.jvm内存模型"></a>3.2.jvm内存模型</h3><p>主要优化堆，避免发生fullGC</p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635428602937.png" alt="1635428602937"></p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635428629073.png" alt="1635428629073"></p>
+<p>创建对象：</p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635428752533.png" alt="1635428752533"></p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635429056878.png" alt="1635429056878"></p>
+<h4 id="jconsole和jvisualvm"><a href="#jconsole和jvisualvm" class="headerlink" title="jconsole和jvisualvm"></a>jconsole和jvisualvm</h4><p>jdk小工具，通过命令行启动可以监控本地和远程应用【远程应用需要配置】</p>
+<ol>
+<li>cmd输入【推荐使用这个】<br>jvisualvm</li>
+<li>安装插件Visual GC（用于监控垃圾回收）<br>如果不能安装插件（点击检查最新版本异常）：<br>1）进入该链接：<a target="_blank" rel="noopener" href="https://visualvm.github.io/pluginscenters.html">https://visualvm.github.io/pluginscenters.html</a><br>2）java -version 查看版本1.8.0_171<br>3）找到对应版本复制链接：<a target="_blank" rel="noopener" href="https://visualvm.github.io/uc/8u131/updates.xml.gz">https://visualvm.github.io/uc/8u131/updates.xml.gz</a><br>4）点开设置，编辑插件中心，粘贴URL<br>5）安装插件Visual GC</li>
+</ol>
+<p>visual GC：</p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635430067370.png" alt="1635430067370"></p>
+<h3 id="3-3-优化步骤（重点）"><a href="#3-3-优化步骤（重点）" class="headerlink" title="3.3.优化步骤（重点）"></a>3.3.优化步骤（重点）</h3><ol>
+<li>使用jmeter压测nginx、网关、直接访问服务、通过链路访问服务</li>
+<li>测nginx时使用docker stats查看CPU占用+内存使用量，调整CPU性能</li>
+<li>测网关时，打开jvisualvm查看内存、CPU使用量，调整CPU、内存<ul>
+<li>增加jvm内存：-Xmx512m</li>
+</ul>
+</li>
+<li>记录下压测指标填在下表中<ul>
+<li>先优化各中间件</li>
+<li>使用更好的协议</li>
+<li>买更好的网卡+网线+带宽</li>
+</ul>
+</li>
+<li>压测说明<ul>
+<li>首页渲染（全量数据获取） localhost:10000</li>
+<li>选中高级，从HTML文件获取所有内含的资源、并行下载数量</li>
+</ul>
+</li>
+<li>指标：<ul>
+<li>中间件越多，性能损失越大，损失在网络交互</li>
+<li>命中率不低于95%</li>
+<li>锁等待次数越低、时间越短越好</li>
+<li>业务：<ul>
+<li>DB（MYSQL优化，加索引 parent_cid pms_category表）</li>
+<li>模板渲染速度（thymeleaf开启缓存）<ul>
+<li>spring.thymeleaf.cache&#x3D; true</li>
+</ul>
+</li>
+<li>静态资源（把静态资源放到nginx里面）</li>
+<li>日志级别改成error（打印日志会耗时）<ul>
+<li>logging.level. com.atguigu.gulimall: error</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>堆内存优化<ul>
+<li>-Xmx1024m -Xms1024m -Xmn512m</li>
+</ul>
+</li>
+<li>NGINX动静分离</li>
+</ol>
+<p><strong>全量数据获取：</strong></p>
+<p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635433495777.png" alt="1635433495777"></p>
+<h4 id="nginx动静分离"><a href="#nginx动静分离" class="headerlink" title="nginx动静分离"></a>nginx动静分离</h4><p><img src="https://halo-ctc.upyun.ctcnb.cn/gulimall-dev/1635434764388.png" alt="1635434764388"></p>
+<ol>
+<li>未动静分离，指的是静态资源全都存储在Tomcat中，所有静态资源都要从Tomcat获取， 会访问 <code>nginx-&gt;gateway-&gt;Tomcat</code>获取静态资源，从而导致占用Tomcat很多线程来处理静态资源</li>
+<li>动静分离，表示将资源与web服务器分离，可存放在nginx中，静态资源直接从nginx中返回 &#x2F;static&#x2F;**所有请求都由nginx直接返回</li>
+</ol>
+<h1 id="压测结果"><a href="#压测结果" class="headerlink" title="压测结果"></a>压测结果</h1><p>吞吐量括号内表示瓶颈，（db）表示瓶颈在db</p>
+<p>压测内容</p>
+<p>压测线程数</p>
+<p>吞吐量&#x2F;s</p>
+<p>90%响应时间</p>
+<p>99%响应时间</p>
+<p>Nginx</p>
+<p>50</p>
+<p>8788</p>
+<p>2</p>
+<p>200</p>
+<p>Gateway localhost:88</p>
+<p>50</p>
+<p>32719</p>
+<p>3</p>
+<p>5</p>
+<p>简单服务 localhost:10000&#x2F;hello</p>
+<p>50</p>
+<p>5624</p>
+<p>20</p>
+<p>73</p>
+<p>首页渲染 localhost:10000&#x2F;index.html</p>
+<p>50</p>
+<p>850(db,thymeleaf)</p>
+<p>442</p>
+<p>729</p>
+<p>首页渲染（开缓存）</p>
+<p>50</p>
+<p>214</p>
+<p>380</p>
+<p>710</p>
+<p>首页渲染（thymeleaf开缓存+优化数据库+日志级别：error）</p>
+<p>50</p>
+<p>480</p>
+<p>159</p>
+<p>253</p>
+<p>三级分类数据获取 localhost:10000&#x2F;index&#x2F;catalog.json</p>
+<p>50</p>
+<p>2(db)</p>
+<p>26311</p>
+<p>27335</p>
+<p>三级分类数据获取（加索引）</p>
+<p>50</p>
+<p>5</p>
+<p>9597</p>
+<p>10176</p>
+<p>三级分类数据获取（优化业务逻辑(一次性查询)+加索引+堆内存）</p>
+<p>50</p>
+<p>65</p>
+<p>1150</p>
+<p>1849</p>
+<p>三级分类数据获取（优化业务逻辑(一次性查询)+加索引+堆内存+redis缓存）</p>
+<p>50</p>
+<p>390</p>
+<p>155</p>
+<p>296</p>
+<p>三级分类数据获取（优化业务逻辑(一次性查询)+加索引+堆内存+redis缓存+分布式锁）</p>
+<p>50</p>
+<p>313</p>
+<p>212</p>
+<p>355</p>
+<p>首页渲染（全量数据获取） localhost:10000&#x2F;index.html【废弃】</p>
+<p>50</p>
+<p>13(静态资源)</p>
+<p>4916</p>
+<p>6954</p>
+<p>首页渲染（全量数据获取+动静分离）gulimall.com</p>
+<p>50</p>
+<p>8.2</p>
+<p>8514</p>
+<p>13435</p>
+<p>首页渲染（全量数据获取+动静分离+堆优化）gulimall.com</p>
+<p>50</p>
+<p>8</p>
+<p>8311</p>
+<p>13411</p>
+<p>Nginx+Gateway</p>
+<p>50</p>
+<p>Gateway+简单服务 localhost:88&#x2F;hello</p>
+<p>50</p>
+<p>1180</p>
+<p>80</p>
+<p>142</p>
+<p>全链路(nginx+gateway+简单服务) gulimall.com&#x2F;hello</p>
+<p>50</p>
+<p>532</p>
+<p>126</p>
+<p>226</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">阿库娅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/12/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">http://example.com/2023/02/12/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/">java</a><a class="post-meta__tags" href="/tags/spring/">spring</a><a class="post-meta__tags" href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/">压力测试</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/15/docker-%E6%90%AD%E5%BB%BA-minio-%E5%AE%B9%E5%99%A8/" title="Docker 搭建 Minio 容器 "><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">Docker 搭建 Minio 容器 </div></div></a></div><div class="next-post pull-right"><a href="/2023/01/24/%E7%89%9B%E5%AE%A2%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/" title="牛客刷题总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">牛客刷题总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/08/java%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%A1%86%E6%9E%B6%E7%AF%87/" title="java知识点——框架篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-08</div><div class="title">java知识点——框架篇</div></div></a></div><div><a href="/2023/05/12/%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2springboot%E9%A1%B9%E7%9B%AE/" title="使用docker部署springboot项目"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-12</div><div class="title">使用docker部署springboot项目</div></div></a></div><div><a href="/2023/01/14/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD+%E9%99%8D%E7%BA%A7+%E9%99%90%E6%B5%81/" title="sentinel实现熔断+降级+限流"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-14</div><div class="title">sentinel实现熔断+降级+限流</div></div></a></div><div><a href="/2023/01/13/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92/" title="线程池和异步编排"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-13</div><div class="title">线程池和异步编排</div></div></a></div><div><a href="/2022/11/25/java%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%B9%B6%E5%8F%91%E7%AF%87/" title="java知识点-并发篇"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-25</div><div class="title">java知识点-并发篇</div></div></a></div><div><a href="/2024/07/07/api%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/" title="api开发平台"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-07</div><div class="title">api开发平台</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">阿库娅</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">78</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ctcnb"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">1.性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4RT-Response-Time-%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 响应时间RT(Response Time)（重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%94%99%E8%AF%AF%E7%8E%87%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 错误率（重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-HPS%EF%BC%88Hits-Per-Second%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 HPS（Hits Per Second）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TPS-Transaction-per-Second-%E5%90%9E%E5%90%90%E9%87%8F%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">TPS(Transaction per Second)吞吐量（重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QPS-Query-per-Second-%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.1.5.</span> <span class="toc-text">QPS(Query per Second)（重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%EF%BC%88MaxResponse-Time%EF%BC%89"><span class="toc-number">1.1.6.</span> <span class="toc-text">最大响应时间（MaxResponse Time）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%91%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4-Mininum-ResponseTime%EF%BC%89"><span class="toc-number">1.1.7.</span> <span class="toc-text">最少响应时间(Mininum ResponseTime）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#90-%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4-90-Response-Time"><span class="toc-number">1.1.8.</span> <span class="toc-text">90%响应时间(90%Response Time)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">2. 压测工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-AB"><span class="toc-number">1.2.1.</span> <span class="toc-text">Apache AB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E7%89%B9%E6%9E%97"><span class="toc-number">1.2.2.</span> <span class="toc-text">加特林</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMeter"><span class="toc-number">1.2.3.</span> <span class="toc-text">JMeter</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JMeter-1"><span class="toc-number">2.</span> <span class="toc-text">JMeter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.</span> <span class="toc-text">1.使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%B7%BB%E5%8A%A0%E7%BA%BF%E7%A8%8B%E7%BB%84"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1.添加线程组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%B7%BB%E5%8A%A0%E5%8F%96%E6%A0%B7%E5%99%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2.添加取样器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%B7%BB%E5%8A%A0%E7%9B%91%E5%90%AC%E5%99%A8"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3.添加监听器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%9F%E7%9C%8B%E7%BB%93%E6%9E%9C%E6%A0%91"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">察看结果树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%87%E6%80%BB%E6%8A%A5%E5%91%8A"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">汇总报告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E6%8A%A5%E5%91%8A"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">聚合报告</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JMeterAddress-Already-in-use-%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3"><span class="toc-number">2.2.</span> <span class="toc-text">2.JMeterAddress Already in use 错误解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BC%98%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">3.优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%E8%80%83%E8%99%91%E7%82%B9"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1.影响性能考虑点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2.jvm内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jconsole%E5%92%8Cjvisualvm"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">jconsole和jvisualvm</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BC%98%E5%8C%96%E6%AD%A5%E9%AA%A4%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.3.优化步骤（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">nginx动静分离</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%8B%E6%B5%8B%E7%BB%93%E6%9E%9C"><span class="toc-number">3.</span> <span class="toc-text">压测结果</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/%E5%9C%A8%E7%BB%BF%E8%81%94%E4%B8%8A%E5%AE%89%E8%A3%85clouddrive2/" title="在绿联上安装clouddrive2">在绿联上安装clouddrive2</a><time datetime="2024-07-07T02:22:00.000Z" title="Created 2024-07-07 10:22:00">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/%E4%BD%BF%E7%94%A8github%E5%92%8Ccloudflare%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BAdocker%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%8C%E8%A7%A3%E5%86%B3docker%E9%95%9C%E5%83%8F%E6%97%A0%E6%B3%95%E6%8B%89%E5%8F%96/" title="使用github和cloudflare实现自建docker加速器，解决docker镜像无法拉取的问题">使用github和cloudflare实现自建docker加速器，解决docker镜像无法拉取的问题</a><time datetime="2024-07-07T02:20:36.000Z" title="Created 2024-07-07 10:20:36">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/docker-java%E4%BD%BF%E7%94%A8win%E7%B3%BB%E7%BB%9F%E4%B8%8Bdocker/" title="docker-java使用win系统下docker">docker-java使用win系统下docker</a><time datetime="2024-07-07T02:18:45.000Z" title="Created 2024-07-07 10:18:45">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/api%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/" title="api开发平台">api开发平台</a><time datetime="2024-07-07T02:16:44.000Z" title="Created 2024-07-07 10:16:44">2024-07-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/07/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E4%B8%BAwin-linux%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6/" title="python程序打包为win/linux可执行文件">python程序打包为win/linux可执行文件</a><time datetime="2024-07-07T01:47:49.000Z" title="Created 2024-07-07 09:47:49">2024-07-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 阿库娅</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
